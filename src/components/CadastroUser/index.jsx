@@ -1,73 +1,116 @@
-import { useRef } from "react";
-import "./style.css";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { FaUser, FaLock, FaSign } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import "./style.css";
 
-function CadastroUser() {
-  const inputProfilePhoto = useRef();
-  const inputName = useRef();
-  const inputUsername = useRef();
-  const inputEmail = useRef();
-  const inputPassword = useRef();
+export default function CadastroUser() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function createUser() {
     const formData = new FormData();
-    formData.append("name", inputName.current.value);
-    formData.append("username", inputUsername.current.value);
-    formData.append("email", inputEmail.current.value);
-    formData.append("password", inputPassword.current.value);
-    formData.append("file", inputProfilePhoto.current.files[0]); // Pega o arquivo real
+    formData.append("name", name);
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    //formData.append("file", inputProfilePhoto.current.files[0]); // Pega o arquivo real
     formData.append("role", "user");
 
-    await api.post("/users/create", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    try {
+      const response = await api.post("/users/create", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      if (response.status === 201) {
+        navigate("/entrar");
+      }
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
+    }
   }
 
   return (
     <div className="container">
       <form action="" method="POST">
-        <h1>Cadastro de Usuário</h1>
-        <input type="file" name="profile_photo" ref={inputProfilePhoto} />
-        <input
-          type="text"
-          name="name"
-          placeholder="Nome"
-          required
-          ref={inputName}
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-          ref={inputUsername}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-          ref={inputEmail}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          required
-          ref={inputPassword}
-        />
-        <button
-          type="button"
-          onClick={(event) => {
-            event.preventDefault();
-            createUser();
-          }}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="login-box"
         >
-          Cadastrar
-        </button>
+          <h2 className="title">Cadastrar</h2>
+
+          <div className="input-group">
+            <FaUser className="icon" />
+            <input
+              type="text"
+              placeholder="Nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="input-field"
+            />
+          </div>
+
+          <div className="input-group">
+            <FaUser className="icon" />
+            <input
+              type="text"
+              placeholder="Nome de Usuário"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="input-field"
+            />
+          </div>
+
+          <div className="input-group">
+            <FaSign className="icon" />
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="input-field"
+            />
+          </div>
+
+          <div className="input-group">
+            <FaLock className="icon" />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input-field"
+            />
+          </div>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="login-button"
+            type="button"
+            onClick={(event) => {
+              event.preventDefault();
+              createUser();
+            }}
+          >
+            Cadastrar
+          </motion.button>
+
+          <p className="signup-text">
+            ou{" "}
+            <Link className="link" to="/entrar">
+              Entrar
+            </Link>
+          </p>
+        </motion.div>
       </form>
     </div>
   );
 }
-
-export default CadastroUser;
