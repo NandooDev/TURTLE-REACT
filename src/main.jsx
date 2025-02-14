@@ -5,6 +5,7 @@ import "./index.css";
 import CadastroUser from "./components/CadastroUser";
 import LoginUser from "./components/LoginUser";
 import PageMain from "./components/PageMain";
+import PageEntrar from "./components/PageEntrar";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/entrar" element={<LoginUser />} />
         <Route path="/cadastrar" element={<CadastroUser />} />
         <Route path="/feed-turtle" element={<PageMain />} />
+        <Route path="/turtle-entrar" element={<PageEntrar />} />
       </Routes>
     </Router>
   </StrictMode>
