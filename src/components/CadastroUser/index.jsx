@@ -31,6 +31,7 @@ export default function CadastroUser() {
         navigate("/entrar");
       }
     } catch (error) {
+      window.alert("Erro ao criar usuário, por favor tente novamente!")
       console.error("Erro ao criar usuário:", error);
     }
   }
@@ -54,6 +55,7 @@ export default function CadastroUser() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="input-field"
+              required
             />
           </div>
 
@@ -65,6 +67,7 @@ export default function CadastroUser() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="input-field"
+              required
             />
           </div>
 
@@ -76,6 +79,7 @@ export default function CadastroUser() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="input-field"
+              required
             />
           </div>
 
@@ -87,6 +91,7 @@ export default function CadastroUser() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="input-field"
+              required
             />
           </div>
 
