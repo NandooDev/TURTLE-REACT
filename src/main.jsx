@@ -6,6 +6,7 @@ import CadastroUser from "./components/CadastroUser";
 import LoginUser from "./components/LoginUser";
 import PageMain from "./components/PageMain";
 import PageEntrar from "./components/PageEntrar";
+import ForgotPassword from "./components/ForgotPassword";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/cadastrar" element={<CadastroUser />} />
         <Route path="/feed-turtle" element={<PageMain />} />
         <Route path="/turtle-entrar" element={<PageEntrar />} />
+        <Route path="/esqueceu-a-senha" element={<ForgotPassword />} />
       </Routes>
     </Router>
   </StrictMode>

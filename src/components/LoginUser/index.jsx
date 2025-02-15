@@ -73,9 +73,9 @@ export default function LoginUser() {
           <label className="checkbox">
             <input type="checkbox" /> Lembrar de mim
           </label>
-          <a href="#" className="forgot">
-            Esqueceu a senha?
-          </a>
+          <Link className="link" to="/esqueceu-a-senha">
+            Esqueceu a Senha?
+          </Link>
         </div>
 
         <motion.button

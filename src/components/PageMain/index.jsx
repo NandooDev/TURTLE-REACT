@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 export default function PageMain() {
-  return (
-    <h1>HELLO WORLD</h1>
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function verifyLogin() {
+      if (!localStorage.getItem("acessToken")) {
+        navigate("/entrar");
+      }
+    }
+    verifyLogin();
+  }, [navigate]);
+
+  return <h1>HELLO WORLD</h1>;
 }
