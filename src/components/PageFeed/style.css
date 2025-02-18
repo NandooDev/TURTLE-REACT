@@ -24,8 +24,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
   width: 400px;
+}
+
+.post {
+  margin-bottom: 30px;
 }
 
 .post .user-post {
@@ -33,7 +36,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   margin-bottom: 10px;
   color: white;
 }
@@ -71,15 +74,32 @@
   cursor: pointer;
   width: 25px;
   height: auto;
-  transition: transform 0.1s ease-in-out;
-}
-
-.buttons .icon:hover {
-  transform: scale(1.1); /* Aumenta a imagem em 10% */
 }
 
 .descricao {
   color: white;
   padding: 5px;
   align-items: justify;
+  width: 400px;
+}
+
+.buttons div {
+  overflow: hidden;
+  width: 55px;
+}
+
+.buttons div p {
+  width: 30px;
+}
+
+.buttons .icon {
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.buttons .icon:hover {
+  transform: scale(1.1); /* Aumenta a imagem em 10% */
 }
