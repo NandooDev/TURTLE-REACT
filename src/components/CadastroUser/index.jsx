@@ -19,7 +19,6 @@ export default function CadastroUser() {
     formData.append("username", username);
     formData.append("email", email);
     formData.append("password", password);
-    //formData.append("file", inputProfilePhoto.current.files[0]); // Pega o arquivo real
     formData.append("role", "user");
 
     try {
