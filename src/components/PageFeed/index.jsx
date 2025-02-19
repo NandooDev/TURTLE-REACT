@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaBorderNone, FaComment, FaHeart } from "react-icons/fa";
+import { FaPlus, FaComment, FaHeart } from "react-icons/fa";
 import api from "../../services/api";
 import "./style.css";
 
 export default function PageFeed() {
   const [posts, setPosts] = useState([]);
+  const [hasPosts, setHasPosts] = useState(false); // Estado para controlar se há posts
 
   useEffect(() => {
     async function getPosts() {
       try {
         const response = await api.get("/posts/");
         const postsData = response.data;
+
+        if (!postsData || postsData.length === 0) {
+          setHasPosts(false);
+          return;
+        } else {
+          setHasPosts(true);
+        }
 
         const postsWithUserData = await Promise.all(
           postsData.map(async (post) => {
@@ -44,12 +51,20 @@ export default function PageFeed() {
     getPosts();
   }, []);
 
+  function pageCreatePost() {
+    window.location.href = "/criar-post";
+  }
+
   return (
     <div className="container">
       <div></div>
       <div className="barra-pesquisa">
+        <FaPlus className="icon" onClick={pageCreatePost} />
         <input type="text" placeholder="Buscar pessoas" />
       </div>
+
+      {!hasPosts && <h2 id="notPosts">Nenhuma publicação até o momento!</h2>}
+
       <div id="posts">
         {posts.map((post) => (
           <div className="post" key={post.id}>
@@ -63,19 +78,24 @@ export default function PageFeed() {
               />
               <h3>{post.username}</h3>
             </div>
-            <div className="img-post">
-              <img src={post.attachment} alt="imagem do post" />
-            </div>
+
+            {post.attachment && ( // Verifica se há imagem antes de renderizar
+              <div className="img-post">
+                <img src={post.attachment} alt="imagem do post" id="imgpost" />
+              </div>
+            )}
+
             <div className="buttons">
               <div>
-                <FaHeart className="icon"></FaHeart>
+                <FaHeart className="icon" />
                 <p>10</p>
               </div>
               <div>
-                <FaComment className="icon"></FaComment>
+                <FaComment className="icon" />
                 <p>10</p>
               </div>
             </div>
+
             <p className="descricao">{post.content}</p>
           </div>
         ))}

@@ -8,16 +8,36 @@
 }
 
 .barra-pesquisa {
+  overflow: hidden;
   width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   & input {
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     border: none;
     outline: none;
     font-size: 15px;
     padding: 8px;
   }
+
+  & .icon {
+    cursor: pointer;
+    width: 10%;
+    height: auto;
+    padding: 5px;
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1); /* Aumenta a imagem em 10% */
+  }
+}
+
+h2 {
+  color: white;
 }
 
 .posts {
@@ -102,4 +122,8 @@
 
 .buttons .icon:hover {
   transform: scale(1.1); /* Aumenta a imagem em 10% */
+}
+
+.notimg {
+  display: none;
 }

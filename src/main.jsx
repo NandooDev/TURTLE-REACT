@@ -7,6 +7,7 @@ import LoginUser from "./components/LoginUser";
 import PageFeed from "./components/PageFeed";
 import PageEntrar from "./components/PageEntrar";
 import ForgotPassword from "./components/ForgotPassword";
+import CriarPost from "./components/CriarPost";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/feed-turtle" element={<PageFeed />} />
         <Route path="/" element={<PageEntrar />} />
         <Route path="/esqueceu-a-senha" element={<ForgotPassword />} />
+        <Route path="/criar-post" element={<CriarPost />} />
       </Routes>
     </Router>
   </StrictMode>
