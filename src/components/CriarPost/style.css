@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #0d0723;
+    padding: 0;
+  }
+  
+  .login-box {
+    background: #0b0522;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #00bf63;
+    max-width: 350px;
+    text-align: center;
+  }
+  
+  .title {
+    color: #32cd32;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    background: #333;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .icon {
+    color: #32cd32;
+    margin-right: 0.5rem;
+  }
+  
+  .input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #bbb;
+    margin-bottom: 1rem;
+  }
+  
+  .checkbox input {
+    margin-right: 5px;
+  }
+  
+  .forgot {
+    color: #32cd32;
+    text-decoration: none;
+  }
+  
+  .login-button {
+    background: #32cd32;
+    color: black;
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+  
+  .login-button:hover {
+    background: #28a428;
+  }
+  
+  .signup-text {
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .signup-text .link {
+    color: #32cd32;
+    text-decoration: none;
+  }
+
+  .notPosts {
+    display: block;
+  }
+  .yesPosts {
+    display: none;
+  }
