@@ -62,8 +62,8 @@ export default function PageFeed() {
     navigate(`/buscar-usuario?username=${username}`); // Passa o username para a URL
   }
 
-  const handleProfileClick = () => {
-    navigate(`/perfil/${username}`); // Redireciona para /perfil/nandoodev
+  const handleProfileClick = (user) => {
+    navigate(`/perfil?idUser=${user}`); 
   };
 
   return (
@@ -71,15 +71,7 @@ export default function PageFeed() {
       <div></div>
       <div className="barra-pesquisa">
         <FaPlus className="icon" onClick={pageCreatePost} />
-        <div>
-          <input
-            type="text"
-            placeholder="Buscar pessoas"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <FaSearch className="icon" onClick={buscarUser}></FaSearch>
-        </div>
+        <FaSearch className="icon" onClick={buscarUser}></FaSearch>
       </div>
 
       {!hasPosts && <h2 id="notPosts">Nenhuma publicação até o momento!</h2>}
@@ -89,14 +81,14 @@ export default function PageFeed() {
           <div className="post" key={post.id}>
             <div className="user-post">
               <img
-                onClick={handleProfileClick}
+                onClick={() => handleProfileClick(post.id_user)}
                 src={
                   post.profile_photo ||
                   "https://i.pinimg.com/236x/df/fd/d1/dffdd1fda06ef0bab838e7e3504d898c.jpg"
                 }
                 alt="foto de perfil"
               />
-              <h3 onClick={handleProfileClick}>{post.username}</h3>
+              <h3 onClick={() => handleProfileClick(post.id_user)}>{post.username}</h3>
             </div>
 
             {post.attachment && ( // Verifica se há imagem antes de renderizar

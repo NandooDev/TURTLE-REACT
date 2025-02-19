@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import api from "../../services/api";
 import "./style.css";
 
@@ -10,6 +10,8 @@ export default function UserBuscado() {
   const [hasUser, setHasUser] = useState(false);
   const [searched, setSearched] = useState(false);
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -52,6 +54,10 @@ export default function UserBuscado() {
     setSearched(false); 
   };
 
+  const handleProfileClick = (user) => {
+    navigate(`/perfil?idUser=${user}`); 
+  };
+
   return (
     <div className="container">
       <div></div>
@@ -71,13 +77,15 @@ export default function UserBuscado() {
       {hasUser && user && (
         <div className="userFound" key={user.id}>
           <img
+          onClick={() => handleProfileClick(user.id)}
             src={
               user.profile_photo ||
               "https://i.pinimg.com/236x/df/fd/d1/dffdd1fda06ef0bab838e7e3504d898c.jpg"
             }
             alt="foto de perfil"
+            
           />
-          <h3>{user.username}</h3>
+          <h3 onClick={() => handleProfileClick(user.id)}>{user.username}</h3>
         </div>
       )}
 
