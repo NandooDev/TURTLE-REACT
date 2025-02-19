@@ -8,6 +8,8 @@ import PageFeed from "./components/PageFeed";
 import PageEntrar from "./components/PageEntrar";
 import ForgotPassword from "./components/ForgotPassword";
 import CriarPost from "./components/CriarPost";
+import UserBuscado from "./components/UserBuscado";
+import Perfil from "./components/Perfil";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,6 +21,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<PageEntrar />} />
         <Route path="/esqueceu-a-senha" element={<ForgotPassword />} />
         <Route path="/criar-post" element={<CriarPost />} />
+        <Route path="/buscar-usuario" element={<UserBuscado />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </Router>
   </StrictMode>

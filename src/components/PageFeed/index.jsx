@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { FaPlus, FaComment, FaHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaPlus, FaComment, FaHeart, FaSearch } from "react-icons/fa";
 import api from "../../services/api";
 import "./style.css";
 
 export default function PageFeed() {
+  const [username, setUsername] = useState("");
   const [posts, setPosts] = useState([]);
-  const [hasPosts, setHasPosts] = useState(false); // Estado para controlar se há posts
+  const [hasPosts, setHasPosts] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getPosts() {
@@ -55,12 +58,28 @@ export default function PageFeed() {
     window.location.href = "/criar-post";
   }
 
+  function buscarUser() {
+    navigate(`/buscar-usuario?username=${username}`); // Passa o username para a URL
+  }
+
+  const handleProfileClick = () => {
+    navigate(`/perfil/${username}`); // Redireciona para /perfil/nandoodev
+  };
+
   return (
     <div className="container">
       <div></div>
       <div className="barra-pesquisa">
         <FaPlus className="icon" onClick={pageCreatePost} />
-        <input type="text" placeholder="Buscar pessoas" />
+        <div>
+          <input
+            type="text"
+            placeholder="Buscar pessoas"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <FaSearch className="icon" onClick={buscarUser}></FaSearch>
+        </div>
       </div>
 
       {!hasPosts && <h2 id="notPosts">Nenhuma publicação até o momento!</h2>}
@@ -70,13 +89,14 @@ export default function PageFeed() {
           <div className="post" key={post.id}>
             <div className="user-post">
               <img
+                onClick={handleProfileClick}
                 src={
                   post.profile_photo ||
                   "https://i.pinimg.com/236x/df/fd/d1/dffdd1fda06ef0bab838e7e3504d898c.jpg"
                 }
                 alt="foto de perfil"
               />
-              <h3>{post.username}</h3>
+              <h3 onClick={handleProfileClick}>{post.username}</h3>
             </div>
 
             {post.attachment && ( // Verifica se há imagem antes de renderizar

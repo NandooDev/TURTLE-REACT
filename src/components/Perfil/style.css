@@ -1,0 +1,93 @@
+* {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.mainInfos {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  height: 200px;
+}
+
+.mainInfos .profile_photo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mainInfos .profile_photo .photo {
+  height: 80%;
+  width: 80%;
+  overflow: hidden;
+}
+
+.mainInfos .profile_photo .photo img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+.mainInfos .profile_photo .username {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.mainInfos .infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.mainInfos .infos .um {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 50%;
+}
+
+.mainInfos .infos .dois {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  width: 100%;
+  height: 50%;
+  padding: 5px;
+  text-decoration: justify;
+}
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 600px;
+}
+
+.posts div {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.posts img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,66 @@
+* {
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.barra-pesquisa {
+  overflow: hidden;
+  width: 400px;
+
+  & div {
+    width: 100%;
+    overflow: hidden;
+
+    & input {
+      width: 100%;
+      padding: 10px;
+      padding-right: 40px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    & input:focus {
+      border-color: #037319;
+    }
+
+    & .icon {
+      width: 10%;
+    }
+  }}
+
+h2 {
+  color: white;
+}
+
+.userFound {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: white;
+  width: 400px;
+}
+
+.userFound img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.userFound h3 {
+  cursor: pointer;
+}

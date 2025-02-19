@@ -14,13 +14,42 @@
   justify-content: space-between;
   align-items: center;
 
-  & input {
+  & div {
+    position: relative;
     width: 80%;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    padding: 8px;
+    overflow: hidden;
+
+    & input {
+      width: 100%;
+      padding: 10px;
+      padding-right: 40px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    & input:focus {
+      border-color: #037319;
+    }
+
+    & .icon {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      transform: translateY(-50%);
+      border: none;
+      padding: 8px;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 12%;
+      transition: transform 0.1s ease; 
+    }
+
+    & .icon:hover {
+      transform: translateY(-50%) scale(1.1);
+    }
   }
 
   & .icon {
@@ -30,9 +59,9 @@
     padding: 5px;
     transition: transform 0.1s ease-in-out;
   }
-  
+
   .icon:hover {
-    transform: scale(1.1); /* Aumenta a imagem em 10% */
+    transform: scale(1.1); 
   }
 }
 
